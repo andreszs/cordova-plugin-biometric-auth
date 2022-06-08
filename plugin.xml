@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<plugin id="cordova-plugin-biometric-auth"
+		  version="1.0.0"
+		  xmlns="http://apache.org/cordova/ns/plugins/1.0"
+		  xmlns:android="http://schemas.android.com/apk/res/android">
+
+	<name>BiometricAuth</name>
+	<description>Biometric authentication with optional KeyguardManager API for Cordova.</description>
+	<license>MIT</license>
+
+	<engines>
+		<engine name="cordova" version=">=9.0.0"/>
+	</engines>
+
+	<js-module src="www/BiometricAuth.js" name="BiometricAuth">
+		<clobbers target="cordova.plugins.BiometricAuth" />
+	</js-module>
+
+	<platform name="android">
+		<config-file target="config.xml" parent="/*">
+			<preference name="AndroidXEnabled" value="true" />
+		</config-file>
+
+		<preference name="ANDROIDX_BIOMETRIC_VERSION" default="1.2.0-alpha03" />
+		<framework src="androidx.biometric:biometric:$ANDROIDX_BIOMETRIC_VERSION" />
+
+		<config-file target="res/xml/config.xml" parent="/*">
+			<feature name="BiometricAuth">
+				<param name="android-package" value="com.andreszs.biometricauth.BiometricAuth"/>
+			</feature>
+		</config-file>
+
+		<source-file src="src/android/BiometricAuth.java" target-dir="src/com/andreszs/biometricauth" />
+	</platform>
+
+	<platform name="browser">
+		<config-file target="config.xml" parent="/*">
+			<feature name="BiometricAuth">
+				<param name="browser-package" value="BiometricAuth" />
+			</feature>
+		</config-file>
+		<js-module src="src/browser/BiometricAuthProxy.js" name="BiometricAuthProxy">
+			<runs />
+		</js-module>
+		<asset src="src/browser/chevron-left.png" target="fingerprint-chevron-left.png" />
+		<asset src="src/browser/close-octagon-outline.png" target="fingerprint-close.png" />
+		<asset src="src/browser/fingerprint.png" target="fingerprint-success.png" />
+	</platform>
+
+</plugin>

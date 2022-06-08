@@ -1,0 +1,42 @@
+{
+	"name": "cordova-plugin-biometric-auth",
+	"version": "1.0.0",
+	"description": "Biometric authentication with optional KeyguardManager API for Cordova.",
+	"cordova": {
+		"id": "cordova-plugin-biometric-auth",
+		"platforms": [
+			"android",
+			"browser"
+		]
+	},
+	"keywords": [
+		"cordova",
+		"plugin",
+		"biometric",
+		"keyguardmanager",
+		"fingerprint",
+		"face",
+		"ecosystem:cordova",
+		"cordova-android",
+		"cordova-browser"
+	],
+	"engines": [
+		{
+			"name": "cordova",
+			"version": ">=9.0.0"
+		}
+	],
+	"author": {
+		"name": "Andres Zsogon",
+		"email": "andreszs@users.noreply.github.com"
+	},
+	"license": "MIT",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/andreszs/cordova-plugin-biometric-auth.git"
+	},
+	"homepage": "https://github.com/andreszs/cordova-plugin-biometric-auth#readme",
+	"bugs": {
+		"url": "https://github.com/andreszs/cordova-plugin-biometric-auth/issues"
+	}
+}
