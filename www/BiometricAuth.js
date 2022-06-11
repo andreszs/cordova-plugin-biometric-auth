@@ -1,12 +1,13 @@
+"use strict";
 var exec = require('cordova/exec');
 
 var BiometricAuth = {
-    isAvailable: function (successCallback, errorCallback) {
-        cordova.exec(successCallback, errorCallback, "BiometricAuth", "isAvailable", []);
-    },
-    authenticate: function (args, successCallback, errorCallback) {
-        cordova.exec(successCallback, errorCallback, "BiometricAuth", "authenticate", [args]);
-    },
+	isAvailable: function (successCallback, errorCallback, args) {
+		exec(successCallback, errorCallback, "BiometricAuth", "isAvailable", [args]);
+	},
+	authenticate: function (successCallback, errorCallback, args) {
+		exec(successCallback, errorCallback, "BiometricAuth", "authenticate", [args]);
+	}
 };
 
 module.exports = BiometricAuth;

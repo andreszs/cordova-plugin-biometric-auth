@@ -2,7 +2,7 @@ var BiometricAuth = function () {};
 
 BiometricAuth.prototype.AVAILABLE = "AVAILABLE";
 BiometricAuth.prototype.AUTHENTICATION_FAILED = "AUTHENTICATION_FAILED";
-BiometricAuth.prototype.AUTHENTICATION_SUCCEEDED = "AUTHENTICATION_SUCCEEDED";
+BiometricAuth.prototype.BIOMETRIC_SUCCESS = "BIOMETRIC_SUCCESS";
 BiometricAuth.prototype.BIOMETRIC_DISMISSED = "BIOMETRIC_DISMISSED";
 
 /* Browser features */
@@ -19,7 +19,7 @@ BiometricAuth.prototype.ICON_FAILED_SRC = 'fingerprint-close.png';
 BiometricAuth.prototype.ICON_FAILED_ID = 'cordova_plugin_fingerprint_icon_failed';
 BiometricAuth.prototype.ICON_SIZE = '';
 
-BiometricAuth.prototype.authenticate = function (successCallback, errorCallback, params) {
+BiometricAuth.prototype.authenticate = function (successCallback, errorCallback, args) {
 	/* translucid background div */
 	var dialogBg = document.createElement('div');
 	dialogBg.id = BiometricAuth.prototype.FINGERPRINT_BG_DIV;
@@ -50,8 +50,8 @@ BiometricAuth.prototype.authenticate = function (successCallback, errorCallback,
 
 	/* title */
 	var title = '';
-	if (params && typeof (params[0]) === 'object' && typeof (params[0].title) === 'string' && params[0].title.length > 0) {
-		title = params[0].title;
+	if (args && typeof (args[0]) === 'object' && typeof (args[0].title) === 'string' && args[0].title.length > 0) {
+		title = args[0].title;
 	} else {
 		title = 'BiometricAuth Sign On';
 	}
@@ -65,9 +65,9 @@ BiometricAuth.prototype.authenticate = function (successCallback, errorCallback,
 	dialogFg.appendChild(divTitle);
 
 	/* optional subtitle */
-	if (params && typeof (params[0]) === 'object' && typeof (params[0].subtitle) === 'string' && params[0].subtitle.length > 0) {
+	if (args && typeof (args[0]) === 'object' && typeof (args[0].subtitle) === 'string' && args[0].subtitle.length > 0) {
 		var divSubtitle = document.createElement('div');
-		divSubtitle.appendChild(document.createTextNode(params[0].subtitle));
+		divSubtitle.appendChild(document.createTextNode(args[0].subtitle));
 		divSubtitle.style.color = '#BDBDBD';
 		divSubtitle.style.fontSize = '14px';
 		divSubtitle.style.lineHeight = '2em';
@@ -76,9 +76,9 @@ BiometricAuth.prototype.authenticate = function (successCallback, errorCallback,
 	}
 
 	/* optional description */
-	if (params && typeof (params[0]) === 'object' && typeof (params[0].description) === 'string' && params[0].description.length > 0) {
+	if (args && typeof (args[0]) === 'object' && typeof (args[0].description) === 'string' && args[0].description.length > 0) {
 		var divDescription = document.createElement('div');
-		divDescription.appendChild(document.createTextNode(params[0].description));
+		divDescription.appendChild(document.createTextNode(args[0].description));
 		divDescription.style.color = '#BDBDBD';
 		divDescription.style.fontSize = '14px';
 		divDescription.style.lineHeight = '2em';
@@ -142,7 +142,7 @@ BiometricAuth.prototype.authenticate = function (successCallback, errorCallback,
 	});
 	imgIconSuccess.addEventListener('click', function () {
 		document.getElementById(BiometricAuth.prototype.FINGERPRINT_BG_DIV).remove();
-		successCallback(BiometricAuth.prototype.AUTHENTICATION_SUCCEEDED);
+		successCallback(BiometricAuth.prototype.BIOMETRIC_SUCCESS);
 	});
 	dialogFg.appendChild(imgIconSuccess);
 
@@ -179,8 +179,8 @@ BiometricAuth.prototype.authenticate = function (successCallback, errorCallback,
 	document.getElementById(BiometricAuth.prototype.FINGERPRINT_BG_DIV).appendChild(dialogFg);
 };
 
-BiometricAuth.prototype.isAvailable = function (successCallback, errorCallback, optionalParams) {
-	successCallback(BiometricAuth.prototype.AVAILABLE);
+BiometricAuth.prototype.isAvailable = function (successCallback, errorCallback, args) {
+	successCallback(BiometricAuth.prototype.BIOMETRIC_SUCCESS);
 };
 
 module.exports = new BiometricAuth();
