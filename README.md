@@ -41,11 +41,11 @@ cordova.plugins.BiometricAuth.isAvailable(successCallback, errorCallback, [optio
 | **Android-specific** | |
 | authenticators | **int**: An optional bit field representing the types of [BiometricManager.Authenticators](https://developer.android.com/reference/androidx/biometric/BiometricManager.Authenticators) that may be used for authentication on Android. Omit or use `0` to check for either biometrics or device credentials. Use `1`  to check for KeyguardManager authentication. |
 
-### :information_source: Android quirks
+#### Android quirks
 
 Not all combinations of authenticator types are supported prior to Android 11 (API 30). Specifically, `DEVICE_CREDENTIAL` alone is unsupported prior to API 30, and `BIOMETRIC_STRONG | DEVICE_CREDENTIAL` is unsupported on API 28-29.
 
-### :information_source: Browser quirks
+#### Browser quirks
 
 This filler platform always returns **BIOMETRIC_SUCCESS** and does not check nor use a real biometric device.
 
@@ -117,11 +117,11 @@ cordova.plugins.BiometricAuth.authenticate(successCallback, errorCallback, [opti
 | authenticators | **int:** A bit field representing all valid [authenticator](https://developer.android.com/reference/androidx/biometric/BiometricManager.Authenticators) types that may be invoked by the prompt. Use `0` to allow either biometrics or device credentials. Use `1`  to invoke KeyguardManager PIN, pattern, password or biometric if enrolled authentication. Available since API 23. |
 | negativeButtonText | **string**: Sets the text for the cancel button on the prompt. Required whenever fallback is disabled. Available since API 23. |
 
-### :information_source: Android quirks
+#### Android quirks
 
 Not all combinations of authenticator types are supported prior to Android 11 (API 30). Specifically, `DEVICE_CREDENTIAL` alone is unsupported prior to API 30, and `BIOMETRIC_STRONG | DEVICE_CREDENTIAL` is unsupported on API 28-29.
 
-### :information_source: Browser quirks
+#### Browser quirks
 
 This filler platform always returns **AUTHENTICATION_SUCCEEDED** and does not check nor use a real biometric device.
 
