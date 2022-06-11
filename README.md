@@ -112,10 +112,10 @@ cordova.plugins.BiometricAuth.authenticate(successCallback, errorCallback, [opti
 | --- | --- |
 | title | **string**: The title to be displayed on the prompt. Defaults to *Enter unlock credentials*. |
 | subtitle | **string**: The subtitle to be displayed on the prompt. |
-| disableBackup | **boolean**: Removes the backup option from the prompt. Defaults to `false`. Available since API 23. |
+| disableBackup | **boolean**: Removes the backup option from the prompt. Defaults to `false`. |
 | **Android-specific** | |
-| authenticators | **int:** A bit field representing all valid [authenticator](https://developer.android.com/reference/androidx/biometric/BiometricManager.Authenticators) types that may be invoked by the prompt. Use `0` to allow either biometrics or device credentials. Use `1`  to invoke KeyguardManager PIN, pattern, password or biometric if enrolled authentication. Available since API 23. |
-| negativeButtonText | **string**: Sets the text for the cancel button on the prompt. Required whenever fallback is disabled. Available since API 23. |
+| authenticators | **int:** A bit field representing all valid [authenticator](https://developer.android.com/reference/androidx/biometric/BiometricManager.Authenticators) types that may be invoked by the prompt. Use `0` to allow either biometrics or device credentials. Use `1`  to invoke KeyguardManager PIN, pattern, password or biometric if enrolled authentication. |
+| negativeButtonText | **string**: Sets the text for the cancel button on the prompt. Required whenever fallback is disabled. |
 
 #### Android quirks
 
