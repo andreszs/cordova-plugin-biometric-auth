@@ -4,8 +4,6 @@
 
 Biometric authentication with optional KeyguardManager API for Cordova.
 
-[TOCM]
-
 # Platforms
 
 - Android 5+
@@ -43,20 +41,20 @@ cordova.plugins.BiometricAuth.isAvailable(successCallback, errorCallback, [optio
 | **Android-specific** | |
 | authenticators | **int**: An optional bit field representing the types of [BiometricManager.Authenticators](https://developer.android.com/reference/androidx/biometric/BiometricManager.Authenticators) that may be used for authentication on Android. Omit or use `0` to check for either biometrics or device credentials. Use `1`  to check for KeyguardManager authentication. |
 
-:information_source: **Android quirks**
+### :information_source: Android quirks
 
 Not all combinations of authenticator types are supported prior to Android 11 (API 30). Specifically, `DEVICE_CREDENTIAL` alone is unsupported prior to API 30, and `BIOMETRIC_STRONG | DEVICE_CREDENTIAL` is unsupported on API 28-29.
 
-:information_source: **Browser quirks**
+### :information_source: Browser quirks
 
 This filler platform always returns **BIOMETRIC_SUCCESS** and does not check nor use a real biometric device.
 
-#### successCallback return values
+### successCallback return values
 
 - **BIOMETRIC_SUCCESS**: The user can authenticate with the requested method(s).
-- **KEYGUARD_MANAGER**: Android only: Returned on API 21-22, or when biometric is not enrolled and `authenticator` value passed is `0`: The user can authenticate with PIN, pattern or password.
+- **KEYGUARD_MANAGER**: Android only: Returned on API 21-22, or when biometric is not enrolled and `authenticator` value passed is `0` or `1`: The user can authenticate with KeyuardManager methods.
 
-#### errorCallback return values
+### errorCallback return values
 
 - **BIOMETRIC_ERROR_HW_UNAVAILABLE**
 - **BIOMETRIC_ERROR_NONE_ENROLLED**
@@ -65,7 +63,7 @@ This filler platform always returns **BIOMETRIC_SUCCESS** and does not check nor
 - **BIOMETRIC_ERROR_UNSUPPORTED**
 - **BIOMETRIC_STATUS_UNKNOWN**
 
-#### Example 1
+### Example 1
 
 Check for any biometric enrolled, PIN, pattern or password availability.
 
@@ -79,7 +77,7 @@ var onError = function (strError) {
 cordova.plugins.BiometricAuth.isAvailable(onSuccess, onError);
 ```
 
-#### Example 2
+### Example 2
 
 Check for any biometric (e.g. fingerprint, iris, or face) on the device that meets or exceeds the requirements for Class 2. Requires at least API 23 (Android 6).
 
@@ -104,7 +102,7 @@ cordova.plugins.BiometricAuth.isAvailable(onSuccess, onError, optionalParams);
 
 ## authenticate
 
-Shows the biometric prompt to the user or the fallback device credential dialog.
+Shows the biometric prompt or the fallback device credential dialog for authentication.
 
 ```javascript
 cordova.plugins.BiometricAuth.authenticate(successCallback, errorCallback, [optionalParams])
@@ -116,19 +114,22 @@ cordova.plugins.BiometricAuth.authenticate(successCallback, errorCallback, [opti
 | subtitle | **string**: The subtitle to be displayed on the prompt. |
 | disableBackup | **boolean**: Removes the backup option from the prompt. Defaults to `false`. Available since API 23. |
 | **Android-specific** | |
-| authenticators | **int:** A bit field representing all valid [authenticator](https://developer.android.com/reference/androidx/biometric/BiometricManager.Authenticators) types that may be invoked by the prompt. Use `0` to allow either biometrics or device credentials. Use `1`  to invoke KeyguardManager authentication. Available since API 23. |
-| negativeButtonText | **string**: Sets the text for the cancel button on the prompt. Available since API 23. |
-| useKeyguardManager | **boolean**: Use the [KeyguardManager](https://developer.android.com/reference/android/app/KeyguardManager.html) to check for PIN, pattern, password or biometric if enrolled. Defaults to `false`. Available since API 23, enforced in API 21-22.  |
+| authenticators | **int:** A bit field representing all valid [authenticator](https://developer.android.com/reference/androidx/biometric/BiometricManager.Authenticators) types that may be invoked by the prompt. Use `0` to allow either biometrics or device credentials. Use `1`  to invoke KeyguardManager PIN, pattern, password or biometric if enrolled authentication. Available since API 23. |
+| negativeButtonText | **string**: Sets the text for the cancel button on the prompt. Required whenever fallback is disabled. Available since API 23. |
 
-:information_source: **Android quirks**
+### :information_source: Android quirks
 
 Not all combinations of authenticator types are supported prior to Android 11 (API 30). Specifically, `DEVICE_CREDENTIAL` alone is unsupported prior to API 30, and `BIOMETRIC_STRONG | DEVICE_CREDENTIAL` is unsupported on API 28-29.
 
-#### successCallback return values
+### :information_source: Browser quirks
+
+This filler platform always returns **AUTHENTICATION_SUCCEEDED** and does not check nor use a real biometric device.
+
+### successCallback return values
 
 - **AUTHENTICATION_SUCCEEDED**
 
-#### errorCallback return values
+### errorCallback return values
 
 - **AUTHENTICATION_FAILED**
 - Please test demo app provided for other values.
