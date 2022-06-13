@@ -14,7 +14,7 @@ Biometric authentication with optional KeyguardManager API for Cordova.
 - AndroidX ready
 - Authenticate with [BiometricManager](https://developer.android.com/reference/androidx/biometric/BiometricManager) (fingerprint, iris, face, device credentials) since API 23
 - Authenticate with [KeyguardManager](https://developer.android.com/reference/android/app/KeyguardManager) (pin, pattern, password, biometric if enrolled) since API 21
-- Auto fallback to KeyguarManager in Android 5.x
+- Auto fallback to KeyguardManager when no biometric enrolled or supported
 - Supports all authentication modes (WEAK, STRONG, DEVICE CREDENTIALS)
 - Supports [API level](https://apilevels.com/ "API level") 21 and over
 
