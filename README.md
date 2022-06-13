@@ -52,7 +52,7 @@ This filler platform always returns **BIOMETRIC_SUCCESS** and does not check nor
 ### successCallback return values
 
 - **BIOMETRIC_SUCCESS**: The user can authenticate with the requested method(s).
-- **KEYGUARD_MANAGER**: Android only: Returned on API 21-22, or when biometric is not enrolled and `authenticator` value passed is `0` or `1`: The user can authenticate with KeyuardManager methods.
+- **KEYGUARD_MANAGER**: Returned on API 21-22, or when biometric is not enrolled and `authenticators` value passed is `0` or `1`: The user can authenticate with KeyuardManager methods.
 
 ### errorCallback return values
 
