@@ -38,7 +38,6 @@ cordova.plugins.BiometricAuth.isAvailable(successCallback, errorCallback, [optio
 
 | **optionalParams** | |
 | --- | --- |
-| **Android-specific** | |
 | authenticators | **int**: An optional bit field representing the types of [Authenticators](https://developer.android.com/reference/androidx/biometric/BiometricManager.Authenticators) that may be used for authentication on Android. Omit or use `0` to check for either biometrics or device credentials. Use `1`  to check for KeyguardManager authentication. |
 
 ### Android quirks
