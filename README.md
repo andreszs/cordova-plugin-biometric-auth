@@ -123,7 +123,11 @@ Not all combinations of authenticator types are supported prior to Android 11 (A
 
 #### Browser quirks
 
-This filler platform always returns **AUTHENTICATION_SUCCEEDED** and does not check nor use a real biometric device.
+Browser platforms shows a dialog to manually select either of these results and does not perform any actual biometric check:
+
+ - **AUTHENTICATION_FAILED**
+ - **BIOMETRIC_DISMISSED**
+ - **BIOMETRIC_SUCCESS**
 
 ### successCallback return values
 
@@ -161,10 +165,6 @@ cordova.plugins.BiometricAuth.authenticate(onSuccess, onError, optionalParams);
 - Using an **authenticators** value other than `0` or `1` will discard the **disableBackup** option.
 - Always provide a **negativeButtonText** when  using **disableBackup** or not using `DEVICE_CREDENTIAL` authenticator.
 - Android 5 will use the KeyguardManager PIN, pattern or password regardless of any options.
-- Browser platforms simply shows a dialog to manually select either of these results:
-  - AUTHENTICATION_FAILED
-  - BIOMETRIC_DISMISSED
-  - BIOMETRIC_SUCCESS
 
 # Plugin demo app
 
