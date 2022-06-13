@@ -154,13 +154,13 @@ cordova.plugins.BiometricAuth.authenticate(onSuccess, onError, optionalParams);
 
 ### Remarks
 
-- To request device credentials by default (with biometric as fallback) enable the **useKeyguardManager** option.
 - Do not use `BIOMETRIC_STRONG` without checking its availability with **isAvailable** first.
 - Do not use `DEVICE_CREDENTIALS` alone prior to API 30.
 - Do not use `BIOMETRIC_STRONG + DEVICE_CREDENTIAL` on API 28-29.
+- To force usage of KeyguardManager instead of BiometricManager, set `1` to the **authenticators** param.
 - Using an **authenticators** value other than `0` or `1` will discard the **disableBackup** option.
 - Always provide a **negativeButtonText** when  using **disableBackup** or not using `DEVICE_CREDENTIAL` authenticator.
-- Android 5.x will use the KeyguardManager PIN, pattern or password regardless of any options.
+- Android 5 will use the KeyguardManager PIN, pattern or password regardless of any options.
 
 # Plugin demo app
 
