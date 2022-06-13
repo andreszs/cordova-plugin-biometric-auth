@@ -168,7 +168,8 @@ cordova.plugins.BiometricAuth.authenticate(onSuccess, onError, optionalParams);
 
 # Plugin demo app
 
-Get the [Biometric Auth Plugin Demo app](https://www.andreszsogon.com/cordova-biometric-auth-plugin-demo/) to test the plugin in all possible scenarios.
+- [Compiled debug APK and reference](https://www.andreszsogon.com/cordova-biometric-auth-plugin-demo/ "Compiled debug APK and reference")
+- [Source code for www folder](https://github.com/andreszs/cordova-plugin-demos "Source code for www folder")
 
 <img src="https://github.com/andreszs/cordova-plugin-demos/blob/main/com.andreszs.biometric.auth.demo/screenshots/android/biometric-auth.png?raw=true" width="200" /> <img src="https://github.com/andreszs/cordova-plugin-demos/blob/main/com.andreszs.biometric.auth.demo/screenshots/android/biometric-auth-authenticators.png?raw=true" width="200" /> <img src="https://github.com/andreszs/cordova-plugin-demos/blob/main/com.andreszs.biometric.auth.demo/screenshots/android/android-9.png?raw=true" width="200" /> <img src="https://github.com/andreszs/cordova-plugin-demos/blob/main/com.andreszs.biometric.auth.demo/screenshots/android/android-9-b.png?raw=true" width="200" />
 
