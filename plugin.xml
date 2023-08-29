@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <plugin id="cordova-plugin-biometric-auth"
-		  version="1.0.1"
+		  version="1.0.2"
 		  xmlns="http://apache.org/cordova/ns/plugins/1.0"
 		  xmlns:android="http://schemas.android.com/apk/res/android">
 
@@ -21,7 +21,7 @@
 			<preference name="AndroidXEnabled" value="true" />
 		</config-file>
 
-		<preference name="ANDROIDX_BIOMETRIC_VERSION" default="1.2.0-alpha03" />
+		<preference name="ANDROIDX_BIOMETRIC_VERSION" default="1.2.0-alpha05" />
 		<framework src="androidx.biometric:biometric:$ANDROIDX_BIOMETRIC_VERSION" />
 
 		<config-file target="res/xml/config.xml" parent="/*">
