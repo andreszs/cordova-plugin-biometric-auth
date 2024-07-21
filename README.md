@@ -6,7 +6,7 @@ Biometric authentication with optional KeyguardManager API for Cordova.
 
 # Platforms
 
-- Android 5+
+- Android (minSdk 21)
 - Browser (filler)
 
 # Features
@@ -20,10 +20,16 @@ Biometric authentication with optional KeyguardManager API for Cordova.
 
 # Installation
 
-## Install latest version from NPM
+#### Install latest version from NPM
 
 ```bash
   cordova plugin add cordova-plugin-biometric-auth
+```
+
+#### Install latest version from master
+
+```bash
+  cordova plugin add https://github.com/andreszs/cordova-plugin-biometric-auth
 ```
 
 # Methods
@@ -33,25 +39,27 @@ Biometric authentication with optional KeyguardManager API for Cordova.
 Checks if the user can authenticate with either biometrics, fallback PIN, pattern or password. Biometric requires at least one biometric sensor to be present, enrolled, and available on the device.
 
 ```javascript
-cordova.plugins.BiometricAuth.isAvailable(successCallback, errorCallback, [optionalParams])
+cordova.plugins.BiometricAuth.isAvailable(successCallback, errorCallback, [args])
 ```
 
-| **optionalParams** | |
-| --- | --- |
-| authenticators | **int**: An optional bit field representing the types of [Authenticators](https://developer.android.com/reference/androidx/biometric/BiometricManager.Authenticators) that may be used for authentication on Android. Omit or use `0` to check for either biometrics or device credentials. Use `1`  to check for KeyguardManager authentication. |
+#### optional `args` parameters object
 
-### Android quirks
+| parameter | type | default | description |
+| --- | --- | --- | --- |
+| authenticators | int | 0 | An optional bit field representing the types of [Authenticators](https://developer.android.com/reference/androidx/biometric/BiometricManager.Authenticators) that may be used for authentication. Omit or use `0` to check for either biometrics or device credentials. Use `1`  to check for KeyguardManager authentication. |
+
+#### Android quirks
 
 Not all combinations of authenticator types are supported prior to Android 11 (API 30). Specifically, `DEVICE_CREDENTIAL` alone is unsupported prior to API 30, and `BIOMETRIC_STRONG | DEVICE_CREDENTIAL` is unsupported on API 28-29.
 
-### Browser quirks
+#### Browser quirks
 
 This filler platform always returns **BIOMETRIC_SUCCESS** and does not check nor use a real biometric device.
 
 ### successCallback return values
 
 - **BIOMETRIC_SUCCESS**: The user can authenticate with the requested method(s).
-- **KEYGUARD_SUCCESS**: Returned on API 21-22, or when biometric is not enrolled and `authenticators` value passed is `0` or `1`: The user can authenticate with KeyuardManager methods.
+- **KEYGUARD_SUCCESS**: Returned on API 21-22, or when biometric is not enrolled and `authenticators` value passed is `0` or `1`: The user can authenticate with KeyguardManager methods.
 
 ### errorCallback return values
 
@@ -104,23 +112,24 @@ cordova.plugins.BiometricAuth.isAvailable(onSuccess, onError, optionalParams);
 Shows the biometric prompt or the fallback device credential dialog for authentication.
 
 ```javascript
-cordova.plugins.BiometricAuth.authenticate(successCallback, errorCallback, [optionalParams])
+cordova.plugins.BiometricAuth.authenticate(successCallback, errorCallback, [args])
 ```
 
-| optionalParams | |
-| --- | --- |
-| title | **string**: The title to be displayed on the prompt. Defaults to *Enter unlock credentials*. |
-| subtitle | **string**: The subtitle to be displayed on the prompt. |
-| disableBackup | **boolean**: Removes the backup option from the prompt. Defaults to `false`. |
-| **Android-specific** | |
-| authenticators | **int:** A bit field representing all valid [authenticator](https://developer.android.com/reference/androidx/biometric/BiometricManager.Authenticators) types that may be invoked by the prompt. Use `0` to allow either biometrics or device credentials. Use `1`  to invoke KeyguardManager PIN, pattern, password or biometric if enrolled authentication. |
-| negativeButtonText | **string**: Sets the text for the cancel button on the prompt. Required whenever fallback is disabled. |
+#### optional `args` parameters object
 
-### Android quirks
+| parameter | type | default | description |
+| --- | --- | --- | --- |
+| title | String | *Enter unlock credentials* | The title to be displayed on the prompt. |
+| subtitle | String | | The subtitle to be displayed on the prompt. |
+| disableBackup | Boolean | false | Removes the backup option from the prompt. |
+| authenticators | int | 0 | A bit field representing all valid [authenticator](https://developer.android.com/reference/androidx/biometric/BiometricManager.Authenticators) types that may be invoked by the prompt. Use `0` to allow either biometrics or device credentials. Use `1`  to invoke KeyguardManager PIN, pattern, password or biometric if enrolled authentication. |
+| negativeButtonText | String | | Sets the text for the cancel button on the prompt. Required whenever fallback is disabled. |
+
+#### Android quirks
 
 Not all combinations of authenticator types are supported prior to Android 11 (API 30). Specifically, `DEVICE_CREDENTIAL` alone is unsupported prior to API 30, and `BIOMETRIC_STRONG | DEVICE_CREDENTIAL` is unsupported on API 28-29.
 
-### Browser quirks
+#### Browser quirks
 
 Browser platforms shows a dialog to manually select either of these results and does not perform any actual biometric check:
 
@@ -167,8 +176,8 @@ cordova.plugins.BiometricAuth.authenticate(onSuccess, onError, optionalParams);
 
 # Plugin demo app
 
-- [Compiled debug APK and reference](https://www.andreszsogon.com/cordova-biometric-auth-plugin-demo/ "Compiled debug APK and reference")
-- [Source code for www folder](https://github.com/andreszs/cordova-plugin-demos "Source code for www folder")
+- [Compiled debug APK](https://github.com/andreszs/cordova-plugin-demos/tree/main/com.andreszs.biometric.auth.demo/apk)
+- [Source code for www folder](https://github.com/andreszs/cordova-plugin-demos)
 
 <img src="https://github.com/andreszs/cordova-plugin-demos/blob/main/com.andreszs.biometric.auth.demo/screenshots/android/biometric-auth.png?raw=true" width="200" /> <img src="https://github.com/andreszs/cordova-plugin-demos/blob/main/com.andreszs.biometric.auth.demo/screenshots/android/biometric-auth-authenticators.png?raw=true" width="200" /> <img src="https://github.com/andreszs/cordova-plugin-demos/blob/main/com.andreszs.biometric.auth.demo/screenshots/android/biometric-auth-strong.png?raw=true" width="200" /> <img src="https://github.com/andreszs/cordova-plugin-demos/blob/main/com.andreszs.biometric.auth.demo/screenshots/android/biometric-auth-credentials.png?raw=true" width="200" />
 
@@ -177,4 +186,4 @@ cordova.plugins.BiometricAuth.authenticate(onSuccess, onError, optionalParams);
 Please report any issue with this plugin in GitHub by providing detailed context and sample code.
 PRs to improve and add new features or platforms are always welcome.
 
-- **PR to add iOS platform is welcome**
+- PR to add iOS platform is welcome
