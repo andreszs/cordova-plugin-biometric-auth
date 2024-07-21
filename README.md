@@ -6,7 +6,7 @@ Biometric authentication with optional KeyguardManager API for Cordova.
 
 # Platforms
 
-- Android (minSdk 21)
+- Android ([minSdk 21](https://apilevels.com/))
 - Browser (filler)
 
 # Features
@@ -16,7 +16,6 @@ Biometric authentication with optional KeyguardManager API for Cordova.
 - Authenticate with [KeyguardManager](https://developer.android.com/reference/android/app/KeyguardManager) (pin, pattern, password, biometric if enrolled) since API 21
 - Auto fallback to KeyguardManager when no biometric enrolled or supported
 - Supports all authentication modes (WEAK, STRONG, DEVICE CREDENTIALS)
-- Supports [API level](https://apilevels.com/ "API level") 21 and over
 
 # Installation
 
