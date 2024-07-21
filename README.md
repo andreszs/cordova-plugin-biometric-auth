@@ -185,4 +185,16 @@ cordova.plugins.BiometricAuth.authenticate(onSuccess, onError, optionalParams);
 Please report any issue with this plugin in GitHub by providing detailed context and sample code.
 PRs to improve and add new features or platforms are always welcome.
 
-- PR to add iOS platform is welcome
+# Changelog
+
+### 1.0.2 (Jul 21, 2024)
+
+* Updated README to fix `isAvailable` return values and minor format improvements.
+
+### 1.0.1 (Jun 13, 2022)
+
+* Improved README.
+
+### 1.0.0 (Jun 11, 2022)
+
+* Initial release with Android and browser as filler platform.
