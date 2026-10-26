@@ -1,8 +1,20 @@
-![npm](https://img.shields.io/npm/dt/cordova-plugin-biometric-auth) ![npm](https://img.shields.io/npm/v/cordova-plugin-biometric-auth) ![GitHub package.json version](https://img.shields.io/github/package-json/v/andreszs/cordova-plugin-biometric-auth?color=FF6D00&label=master&logo=github) ![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/andreszs/cordova-plugin-biometric-auth) ![GitHub top language](https://img.shields.io/github/languages/top/andreszs/cordova-plugin-biometric-auth) ![GitHub](https://img.shields.io/github/license/andreszs/cordova-plugin-biometric-auth) ![GitHub last commit](https://img.shields.io/github/last-commit/andreszs/cordova-plugin-biometric-auth)
+![npm downloads](https://img.shields.io/npm/dt/cordova-plugin-biometric-auth) ![npm version](https://img.shields.io/npm/v/cordova-plugin-biometric-auth) ![GitHub package.json version](https://img.shields.io/github/package-json/v/andreszs/cordova-plugin-biometric-auth?color=FF6D00&label=main&logo=github) [![Android demo](https://img.shields.io/badge/demo-Android-2ea44f?logo=apachecordova&logoColor=white)](https://github.com/andreszs/cordova-plugin-demos/tree/main/com.andreszs.biometric.auth.demo) ![GitHub license](https://img.shields.io/github/license/andreszs/cordova-plugin-biometric-auth)
 
 # cordova-plugin-biometric-auth
 
 Biometric authentication with optional KeyguardManager API for Cordova.
+
+## Table of contents
+
+- [Platforms](#platforms)
+- [Features](#features)
+- [Installation](#installation)
+- [Methods](#methods)
+  - [`isAvailable`](#isavailable)
+  - [`authenticate`](#authenticate)
+- [Plugin demo app](#plugin-demo-app)
+- [Contributing](#contributing)
+- [Changelog](#changelog)
 
 # Platforms
 
